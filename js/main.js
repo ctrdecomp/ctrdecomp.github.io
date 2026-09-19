@@ -26,7 +26,11 @@ function fmtLibOne(e) {
 
 formatters = {
 	[DataType.String]: function(v) { return v; },
-	[DataType.Int]: function(v) { return v.toString(); },
+	[DataType.Int]:
+        function(v) {
+            if (v === null || v === undefined) return "";
+            return v.toString();
+        },
 	[DataType.TitleID]:
 		function(v) {
 			return v.toString(16).toUpperCase().padStart(16, '0');
@@ -65,9 +69,10 @@ formatters = {
 		},
 	[DataType.HexInt]:
 		function(v) {
-			return v.toString(16).toUpperCase();
+			return v.toString(16).toLowerCase();
 		},
 }
+
 function getLocName(game, prefix) {
 	var lang = document.getElementById("lang").value;
 	var value;
@@ -97,21 +102,24 @@ function getLocName(game, prefix) {
 
 function formatField(game, field) {
 	var value;
+	var key = field.key;
+	var type = field.type;
 
-	if (field.key == "name") {
-		value = getLocName(game, "name_");
-	}
-	else if (field.key == "nameshort") {
-		value = getLocName(game, "nameshort_");
-	}
-        else if (field.key == "publish") {
-                value = getLocName(game, "publish_");
-        }
-	else {
-		value = game[field.key];
-	}
+    switch (key) {
+        case "name":
+            value = getLocName(game, "name_");
+            break;
+        case "nameshort":
+            value = getLocName(game, "nameshort_");
+            break;
+        case "publish":
+            value = getLocName(game, "publish_");
+            break;
+        default:
+            value = game[key];
+    }
 
-	return formatters[field.type](value);
+	return formatters[type](value);
 }
 
 function sortPlain(a, b) {
