@@ -425,19 +425,11 @@ function download(path, callback) {
 	req.send();
 }
 
-pages = ["plain_region"];
-
 url = new URL(window.location.href);
-page = url.searchParams.get("page")
 sortName = url.searchParams.get("sort")
 sortDir = url.searchParams.get("dir")
 
-if (pages.includes(page)) {
-	download("data/" + page + ".json", function(data) {
-		info = data;
-		prepareUI();
-	});
-}
-else {
-	document.documentElement.innerHTML = "<h1>Page not found</h1>";
-}
+download("data/3ds_libs.json", function(data) {
+    info = data;
+    prepareUI();
+});
