@@ -256,6 +256,22 @@ function filterGames(games) {
 }
 
 function updateUI() {
+	document.getElementById("loading").style.display = "block";
+	document.getElementById("main").style.display = "none";
+	setTimeout(updateUITask, 0);
+}
+
+function updateUITask() {
+	try {
+		updateUIRender();
+	} catch (e) {
+		console.error(e);
+	}
+	document.getElementById("loading").style.display = "none";
+	document.getElementById("main").style.display = "";
+}
+
+function updateUIRender() {
 	var table = document.getElementById("main");
 	table.innerHTML = "";
 	

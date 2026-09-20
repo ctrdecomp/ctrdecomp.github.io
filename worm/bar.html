@@ -18,9 +18,10 @@
         left: 0;
         clip-path: inset(0 -100vmax);
         background-color: #f45;
-        transition: background-color 1s ease;
+        box-shadow: 0 0 0 100vmax #f45;
+        transition: background-color 1s ease, box-shadow 1s ease;
     }
-    #barinner:hover { background-color: #f88; }
+    #barinner:hover { background-color: #f88; box-shadow: 0 0 0 100vmax #f88; }
     .btn {
         height: 80%;
         padding: 0 1em;
@@ -46,7 +47,6 @@
     .btn.docs   { background-color: #f00; }
     .btn.about   { background-color: #0f0; }
     .btn.round { background-color: #ff0; border-radius: 999px; }
-    html { position: relative; width: fit-content; min-width: 100%; }
     @media (max-width: 600px) {
         #barinner { gap: 0.4em; padding: 0 0.3em; }
         .btn { padding: 0 0.6em; font-size: 14px; }

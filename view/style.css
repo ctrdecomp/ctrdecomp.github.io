@@ -1,7 +1,16 @@
 body {
-    width: 90%;
+    width: 96%;
     margin: auto;
     font-family: monospace;
+}
+
+#tablewrap {
+    display: flex;
+}
+
+#tablewrap::after {
+    content: "";
+    flex: 0 0 2%;
 }
 
 #cats {
@@ -72,8 +81,22 @@ a {
     user-select: none;
 }
 
+#loading {
+    width: 70%;
+    margin: auto;
+    padding: 40px 0;
+    font-size: 24px;
+    text-align: center;
+}
+
 tr:hover {
     background-color: lightgray;
+    color: black;
+}
+
+::selection {
+    background-color: #48f;
+    color: white;
 }
 
 tr:first-child {
