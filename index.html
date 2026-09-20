@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#f34">
 
     <link rel="stylesheet" href="asset/style.css">
+    <link rel="preload" href="/worm/bar.html" as="fetch" crossorigin>
     <link rel="icon" href="/asset/favicon.ico">
 
     <meta name="robots" content="index, follow">
@@ -23,7 +24,8 @@
     <meta property="og:site_name" content="ctrdecomp">
 </head>
 <body>
-    {% include bar.html %}
+    <div id="bar"></div>
+    <script src="main.js"></script>
 
     <main>
         <h1>Welcome to the homepage of 3DS Decompilation!</h1>
